@@ -1,5 +1,5 @@
 import courceModel from "../models/courceModel.js";
-import purchaseCourseModel from "../models/purchaseCourseModel.js";
+import purchaseCourseModel from "../models/PurchaseCourseModel.js";
 import userModel from "../models/userModel.js";
 
 // Create a Checkout Session
