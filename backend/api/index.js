@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "https://deepali-lms-qgqc.vercel.app/",
+    origin: "https://deepali-lms-qgqc.vercel.app",
     credentials: true,
   })
 );
