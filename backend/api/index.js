@@ -1,12 +1,12 @@
 import express from "express";
-import mongoDb from "./config/mongoDb.js";
+import mongoDb from "../config/mongoDb.js";
 import cors from "cors";
 import "dotenv/config";
-import userRouter from "./routes/userRoute.js";
+import userRouter from "../routes/userRoute.js";
 import cookieParser from "cookie-parser";
-import courceRoute from "./routes/courceRoute.js";
-import videoRoute from "./routes/videoRoute.js";
-import purchaseCourseRoute from "./routes/purchaseCourseRoute.js";
+import courceRoute from "../routes/courceRoute.js";
+import videoRoute from "../routes/videoRoute.js";
+import purchaseCourseRoute from "../routes/purchaseCourseRoute.js";
 import ServerlessHttp from "serverless-http";
 
 const app = express();
