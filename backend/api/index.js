@@ -24,10 +24,10 @@ app.get("/", (req, res) => {
   res.send("welcome");
 });
 
-app.use("/api/user", userRouter);
-app.use("/api/cource", courceRoute);
-app.use("/api/videoupload", videoRoute);
-app.use("/api/transaction", purchaseCourseRoute);
+app.use("/user", userRouter);
+app.use("/cource", courceRoute);
+app.use("/videoupload", videoRoute);
+app.use("/transaction", purchaseCourseRoute);
 
 export const handler = ServerlessHttp(app);
 // app.listen(3000, () => {
