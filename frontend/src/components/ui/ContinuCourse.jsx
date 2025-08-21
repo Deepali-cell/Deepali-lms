@@ -19,9 +19,9 @@ function ContinuCourse() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row gap-8 p-6 bg-gray-100 min-h-screen">
+    <div className="flex flex-col md:flex-row gap-8 p-6 min-h-screen">
       {/* Left Section */}
-      <div className="flex-1 bg-white shadow-md rounded-lg p-6">
+      <div className="flex-1 bg-black shadow-md rounded-lg p-6 dark:bg-white">
         <h1 className="text-2xl font-bold text-gray-800 mb-4">
           {data?.courseLecture?.courseTitle || "Loading..."}
         </h1>
@@ -41,7 +41,7 @@ function ContinuCourse() {
       </div>
 
       {/* Right Section */}
-      <div className="w-full md:w-1/3 bg-white shadow-md rounded-lg p-6">
+      <div className="w-full md:w-1/3 dark:bg-white bg-black shadow-md rounded-lg p-6">
         <div className="flex justify-between mb-10">
           <h1 className="text-xl font-semibold text-gray-800 mb-4">
             Course Lectures
@@ -52,7 +52,7 @@ function ContinuCourse() {
           {lectures.map((lecture) => (
             <li
               key={lecture._id}
-              className={`p-4 border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 flex items-center gap-2 cursor-pointer ${
+              className={`p-4 border border-gray-200 rounded-lg shadow-sm hover:bg-gray-100 flex items-center gap-2 cursor-pointer text-black ${
                 selectedLecture?.id === lecture.id ? "bg-gray-200" : ""
               }`}
               onClick={() => handleLectureClick(lecture)}

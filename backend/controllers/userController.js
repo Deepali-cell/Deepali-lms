@@ -128,7 +128,7 @@ const getProfile = async (req, res) => {
 };
 const editProfile = async (req, res) => {
   try {
-    const { name, email } = req.body;
+    const { name } = req.body;
     const userPic = req.file;
     const userId = req.userId;
 
@@ -141,16 +141,10 @@ const editProfile = async (req, res) => {
     }
 
     // Validate name and email
-    if (!name || !email) {
+    if (!name) {
       return res
         .status(400)
-        .json({ success: false, message: "Name and Email are required." });
-    }
-
-    if (!validator.isEmail(email)) {
-      return res
-        .status(400)
-        .json({ success: false, message: "Invalid email format." });
+        .json({ success: false, message: "Name are required." });
     }
 
     // Handle userPic upload to Cloudinary
@@ -170,7 +164,6 @@ const editProfile = async (req, res) => {
 
     // Update user details
     user.name = name;
-    user.email = email;
     user.userPic = cloudinaryUpload.secure_url;
 
     await user.save();

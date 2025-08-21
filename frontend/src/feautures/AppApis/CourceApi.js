@@ -66,45 +66,45 @@ export const CourceApi = createApi({
         courseId,
         lectureId,
       }) => ({
-        url: `/${courseId}/editlecture/${lectureId}`,
+        url: `${courseId}/editlecture/${lectureId}`,
         method: "POST",
         body: { lectureTitle, isPreviewFree, uploadVideoInfo },
       }),
     }),
     removeLecture: builder.mutation({
       query: (lectureId) => ({
-        url: `/removelecture/${lectureId}`,
+        url: `removelecture/${lectureId}`,
         method: "DELETE",
       }),
       invalidatesTags: ["Refetch_Creator_Lecture"],
     }),
     getLectureById: builder.query({
       query: (lectureId) => ({
-        url: `/getlecturebyid/${lectureId}`,
+        url: `getlecturebyid/${lectureId}`,
         method: "GET",
       }),
     }),
     togglePublish: builder.mutation({
       query: ({ courseId, query }) => ({
-        url: `/togglepublish/${courseId}?publish=${query}`,
+        url: `togglepublish/${courseId}?publish=${query}`,
         method: "PUT",
       }),
     }),
     getPubishedCourse: builder.query({
       query: () => ({
-        url: `/getpublishedcourse`,
+        url: `getpublishedcourse`,
         method: "GET",
       }),
     }),
     getCourseByCategory: builder.mutation({
       query: (body) => ({
-        url: "/getcoursebycategory",
+        url: "getcoursebycategory",
         method: "POST",
         body,
       }),
     }),
     searchCoursesByName: builder.query({
-      query: (name) => `/courses/search?name=${encodeURIComponent(name)}`,
+      query: (name) => `courses/search?name=${encodeURIComponent(name)}`,
     }),
   }),
 });

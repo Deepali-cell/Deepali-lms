@@ -149,6 +149,7 @@ const deleteCourse = async (req, res) => {
 const getCourceById = async (req, res) => {
   try {
     const { courseId } = req.params;
+
     const getCourse = await courceModel
       .findById(courseId)
       .populate({ path: "createdBy", select: "name" })
@@ -257,6 +258,7 @@ const getCourseByCategory = async (req, res) => {
 };
 const searchCourse = async (req, res) => {
   const { name } = req.query;
+
   try {
     const courses = await courceModel.find({
       courseTitle: { $regex: name, $options: "i" }, // Case-insensitive search

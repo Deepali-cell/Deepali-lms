@@ -85,13 +85,18 @@ function Profile() {
     }
   }, [updateData, updateError, updateSuccess]);
 
-  return (
-    <div className="mt-6">
-      <h1 className="font-bold text-3xl text-gray-800 mb-6 ml-10">
-        My Profile
-      </h1>
+  useEffect(() => {
+    if (isDialogOpen) {
+      setName(user.name || "");
+      setEmail(user.email || "");
+    }
+  }, [isDialogOpen, user]);
 
-      <div className="bg-white rounded-lg shadow-lg p-6 max-w-3xl ml-10">
+  return (
+    <div className=" min-h-screen">
+      <h1 className="font-bold text-3xl mb-6 ml-10 p-10">My Profile</h1>
+
+      <div className="rounded-lg shadow-lg p-6 max-w-3xl ml-10 dark:bg-white  bg-black text-white">
         <div className="flex items-center gap-10 flex-col md:flex-row lg:flex-row sm:flex-row">
           <Avatar>
             <AvatarImage
@@ -99,26 +104,26 @@ function Profile() {
               alt="@shadcn"
               className="w-24 h-24 rounded-full"
             />
-            <AvatarFallback className="w-24 h-24 flex items-center justify-center bg-gray-300 text-gray-700 font-bold">
+            <AvatarFallback className="w-24 h-24 flex items-center justify-center bg-gray-300  font-bold">
               CN
             </AvatarFallback>
           </Avatar>
           <div className="flex-1 space-y-4">
             <div className="flex justify-between items-center">
-              <h2 className="text-gray-600 font-medium">Name:</h2>
-              <span className="text-gray-800 font-semibold">
+              <h2 className=" dark:text-black font-medium">Name:</h2>
+              <span className=" font-semibold dark:text-black">
                 {user.name || "N/A"}
               </span>
             </div>
             <div className="flex justify-between items-center md:gap-0 gap-6">
-              <h2 className="text-gray-600 font-medium">Email:</h2>
-              <span className="text-gray-800 font-semibold">
+              <h2 className="font-medium dark:text-black">Email:</h2>
+              <span className=" font-semibold dark:text-black">
                 {user.email || "N/A"}
               </span>
             </div>
             <div className="flex justify-between items-center">
-              <h2 className="text-gray-600 font-medium">Role:</h2>
-              <span className="text-gray-800 font-semibold">
+              <h2 className=" font-medium dark:text-black">Role:</h2>
+              <span className=" font-semibold dark:text-black">
                 {user.role || "N/A"}
               </span>
             </div>
@@ -161,8 +166,8 @@ function Profile() {
                   <Input
                     id="email"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="col-span-3"
+                    readOnly
+                    className="col-span-3  cursor-not-allowed"
                   />
                 </div>
 
@@ -190,32 +195,30 @@ function Profile() {
           </Dialog>
         </div>
       </div>
-      <div>
-        <div className="bg-gray-50">
-          <h1 className="font-bold text-3xl text-gray-800 mb-6 ml-10">
-            My Courses
-          </h1>
-          <div className="max-w-7xl p-6 ml-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {isLoading ? (
-                data?.buyCourse?.enrollementCourses.map((_, index) => (
-                  <LearningSkeleton key={index} />
-                ))
-              ) : (
-                <>
-                  {myCources.length === 0 ? (
-                    <p>You are not enrolled in any cource.</p>
-                  ) : (
-                    myCources.map((course, index) => (
-                      <Cource key={index} course={course} />
-                    ))
-                  )}
-                </>
-              )}
-            </div>
+      {/* <div> */}
+      <div className="p-10">
+        <h1 className="font-bold text-3xl  mb-6 ml-10">My Courses</h1>
+        <div className="max-w-7xl p-6 ml-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {isLoading ? (
+              data?.buyCourse?.enrollementCourses.map((_, index) => (
+                <LearningSkeleton key={index} />
+              ))
+            ) : (
+              <>
+                {myCources.length === 0 ? (
+                  <p>You are not enrolled in any cource.</p>
+                ) : (
+                  myCources.map((course, index) => (
+                    <Cource key={index} course={course} />
+                  ))
+                )}
+              </>
+            )}
           </div>
         </div>
       </div>
+      {/* </div> */}
     </div>
   );
 }

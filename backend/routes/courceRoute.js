@@ -40,6 +40,6 @@ courseRoute.get("/getlecturebyid/:lectureId", authUser, getLectureById);
 courseRoute.put("/togglepublish/:courseId", authUser, togglePublishCourse);
 courseRoute.get("/getpublishedcourse", getPublishedCourse);
 courseRoute.post("/getcoursebycategory", authUser, getCourseByCategory);
-courseRoute.get("/courses/search", authUser, searchCourse);
+courseRoute.get("/courses/search", searchCourse);
 
 export default courseRoute;

@@ -68,7 +68,7 @@ const AddCource = () => {
               id="title"
               type="text"
               placeholder="Your course name"
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none dark:text-black"
             />
           </div>
 
@@ -81,7 +81,7 @@ const AddCource = () => {
               Category:
             </label>
             <Select value={category} onValueChange={onselectCategory}>
-              <SelectTrigger className="w-[180px]">
+              <SelectTrigger className="w-[180px] dark:text-black">
                 <SelectValue placeholder="Select a category" />
               </SelectTrigger>
               <SelectContent>

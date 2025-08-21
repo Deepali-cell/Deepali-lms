@@ -15,7 +15,7 @@ function CourseDetailPage() {
     data: getCourseData,
     isLoading: getCourseLoading,
     error: getCourseError,
-  } = useGetCourseByIdQuery({ courseId });
+  } = useGetCourseByIdQuery({ courseId }, { refetchOnMountOrArgChange: true });
 
   const { data } = usePurchaseStatusQuery(courseId);
   const purchasedCourse = data?.purchased;
@@ -71,7 +71,9 @@ function CourseDetailPage() {
             </h4>
             <h5>
               <span className="font-medium">Last updated:</span>{" "}
-              {course?.createdAt.split("T")[0] || "Not available"}
+              {course?.createdAt
+                ? course.createdAt.split("T")[0]
+                : "Not available"}
             </h5>
             <h4>
               <span className="font-medium">Students Enrolled:</span>{" "}

@@ -7,7 +7,7 @@ function MyLearning() {
   const myCources = data?.buyCourse?.enrollementCourses;
   return (
     <>
-      <div className="bg-gray-50">
+      <div className="max-h-full  dark:text-white">
         <div className=" max-w-7xl p-6 mx-auto">
           <h1 className="font-bold text-3xl mb-10 ml-6">My Learning</h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

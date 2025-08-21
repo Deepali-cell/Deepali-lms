@@ -186,7 +186,7 @@ function EditLecture() {
                 type="text"
                 id="lecturetitle"
                 placeholder="Enter your lecture title"
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-300"
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-gray-300 dark:text-black"
               />
             </div>
             <div>

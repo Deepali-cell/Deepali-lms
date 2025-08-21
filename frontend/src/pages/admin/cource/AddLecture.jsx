@@ -77,7 +77,7 @@ function AddLecture() {
               value={lectureTitle}
               onChange={(e) => setLectureTitle(e.target.value)}
               placeholder="Enter lecture title"
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none dark:text-black"
             />
           </div>
 

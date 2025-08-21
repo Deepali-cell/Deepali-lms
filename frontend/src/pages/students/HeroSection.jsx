@@ -43,7 +43,7 @@ function HeroSection() {
           >
             <input
               type="text"
-              placeholder="Search courses..."
+              placeholder="Search courses By Cource name only..."
               className={`flex-grow py-3 px-6 outline-none placeholder-gray-300 ${
                 theme === "dark"
                   ? "text-gray-200 bg-transparent"

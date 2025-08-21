@@ -173,7 +173,7 @@ function CourseDetailEdit() {
                 }
                 type="text"
                 placeholder="Your course Title"
-                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                className="w-full border dark:text-black border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
               />
             </div>
             <div>
@@ -194,7 +194,7 @@ function CourseDetailEdit() {
                   }))
                 }
                 placeholder="Your subtitle"
-                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                className="w-full border border-gray-300 dark:text-black rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
               />
             </div>
             <div>
@@ -214,7 +214,7 @@ function CourseDetailEdit() {
                     description: e.target.value,
                   }))
                 }
-                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                className="w-full border border-gray-300 dark:text-black rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
               />
             </div>
             <div>
@@ -235,7 +235,7 @@ function CourseDetailEdit() {
                   }))
                 }
                 placeholder="Enter your course price"
-                className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                className="w-full border border-gray-300 dark:text-black rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500 focus:outline-none"
               />
             </div>
             <div className="grid grid-cols-4 items-center gap-4">
@@ -249,6 +249,7 @@ function CourseDetailEdit() {
                 id="courseThumbnail"
                 type="file"
                 onChange={changeThumbnail}
+                className="dark:text-black"
               />
               {previewThumbnail && (
                 <img
@@ -271,7 +272,7 @@ function CourseDetailEdit() {
                   value={courseDetail.category}
                   onValueChange={onSelectCategory}
                 >
-                  <SelectTrigger className="w-[180px]">
+                  <SelectTrigger className="w-[180px] dark:text-black">
                     <SelectValue placeholder="Select a category" />
                   </SelectTrigger>
                   <SelectContent>
@@ -311,7 +312,7 @@ function CourseDetailEdit() {
                   value={courseDetail.courseLevel}
                   onValueChange={onSelectLevel}
                 >
-                  <SelectTrigger className="w-[180px]">
+                  <SelectTrigger className="w-[180px] dark:text-black">
                     <SelectValue placeholder="Select a Level" />
                   </SelectTrigger>
                   <SelectContent>

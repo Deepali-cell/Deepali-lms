@@ -5,11 +5,11 @@ import {
 import { useEffect, useState } from "react";
 import Cource from "./Cource";
 import { useParams } from "react-router-dom";
-import { toast } from "sonner";
 
 const SearchPage = () => {
   const params = useParams();
-  const name = params.searchQuery || ""; // Default to an empty string for all courses
+  const name = decodeURIComponent(params.searchQuery || "");
+
   const [category, setCategory] = useState("");
   const [filteredCourses, setFilteredCourses] = useState([]);
   const [
@@ -54,15 +54,9 @@ const SearchPage = () => {
   };
 
   useEffect(() => {
-    if (!category && name === "" && searchSuccess) {
-      // If no search query, display all courses
+    console.log("searchData:", searchData);
+    if (!category && searchSuccess) {
       setFilteredCourses(searchData.courses || []);
-    } else if (!category && searchSuccess) {
-      // If there is a search query, display filtered courses
-      setFilteredCourses(searchData.courses || []);
-    }
-    if (searchError && !category) {
-      toast.error(searchError.message);
     }
   }, [searchSuccess, searchError, category, name]);
 
