@@ -7,9 +7,9 @@ import cookieParser from "cookie-parser";
 import courceRoute from "../routes/courceRoute.js";
 import videoRoute from "../routes/videoRoute.js";
 import purchaseCourseRoute from "../routes/purchaseCourseRoute.js";
-import serverless from "serverless-http";
 
 const app = express();
+
 app.use(express.json());
 app.use(cookieParser());
 app.use(
@@ -18,6 +18,7 @@ app.use(
     credentials: true,
   })
 );
+
 mongoDb();
 
 app.get("/", (req, res) => {
@@ -29,4 +30,5 @@ app.use("/cource", courceRoute);
 app.use("/videoupload", videoRoute);
 app.use("/transaction", purchaseCourseRoute);
 
-export const handler = serverless(app);
+// ✅ Default export required by Vercel
+export default app;
