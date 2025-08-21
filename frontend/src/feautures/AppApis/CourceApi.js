@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const COURCE_API = `http://localhost:3000/api/cource/`;
+const COURCE_API = `https://deepali-lms.vercel.app/api/cource/`;
 export const CourceApi = createApi({
   reducerPath: "CourceApi",
   tagTypes: ["Refetch_Creator_Cource", "Refetch_Creator_Lecture"],

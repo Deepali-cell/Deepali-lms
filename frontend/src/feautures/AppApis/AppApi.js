@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { userLoggedIn, userLoggedOut } from "../AppSlice";
 
-const USER_API = `http://localhost:3000/api/user/`;
+const USER_API = `https://deepali-lms.vercel.app/api/user/`;
 export const AppApi = createApi({
   reducerPath: "AppApi",
   baseQuery: fetchBaseQuery({
