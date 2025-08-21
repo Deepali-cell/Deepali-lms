@@ -7,7 +7,7 @@ import cookieParser from "cookie-parser";
 import courceRoute from "../routes/courceRoute.js";
 import videoRoute from "../routes/videoRoute.js";
 import purchaseCourseRoute from "../routes/purchaseCourseRoute.js";
-import ServerlessHttp from "serverless-http";
+import serverless from "serverless-http";
 
 const app = express();
 app.use(express.json());
@@ -21,7 +21,7 @@ app.use(
 mongoDb();
 
 app.get("/", (req, res) => {
-  res.send("welcome");
+  res.send("Welcome to API");
 });
 
 app.use("/user", userRouter);
@@ -29,7 +29,4 @@ app.use("/cource", courceRoute);
 app.use("/videoupload", videoRoute);
 app.use("/transaction", purchaseCourseRoute);
 
-export const handler = ServerlessHttp(app);
-// app.listen(3000, () => {
-//   console.log("Server is working");
-// });
+export const handler = serverless(app);
