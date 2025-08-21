@@ -1,9 +1,9 @@
 import userModel from "../models/userModel.js";
 import validator from "validator";
-import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import cloudinary from "../config/cloudinary.js";
 import { PassThrough } from "stream";
+import bcrypt from "bcryptjs";
 
 const registerUser = async (req, res) => {
   try {
