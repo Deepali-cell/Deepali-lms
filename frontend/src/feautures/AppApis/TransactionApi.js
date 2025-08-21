@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const TRANSACTION_API = `https://deepali-lms.vercel.app/api/transaction`;
+const TRANSACTION_API = `${import.meta.env.VITE_BACKEND_URL}/api/transaction`;
 
 export const TransactionApi = createApi({
   reducerPath: "TransactionApi",
