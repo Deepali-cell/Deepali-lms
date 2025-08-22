@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import RootReducer from "./RootReducer";
 import { AppApi } from "@/feautures/AppApis/AppApi";
-import { userLoggedIn } from "@/feautures/AppSlice";
+import { userLoggedIn } from "../feautures/AppSlice";
 import { CourceApi } from "@/feautures/AppApis/CourceApi";
 import { TransactionApi } from "@/feautures/AppApis/TransactionApi";
 

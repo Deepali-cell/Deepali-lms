@@ -4,15 +4,15 @@ import "./index.css";
 import App from "./App.jsx";
 import { StateProvider } from "./context/StateContext";
 import { Provider } from "react-redux";
-import { Store } from "./app/Store";
-import { Toaster } from "@/components/ui/sonner";
-import store from "./app/Store";
 import { userLoggedIn } from "./feautures/AppSlice";
+import { Toaster } from "./components/ui/sonner";
+import { Store } from "./app/Store";
 
 // ✅ Put this code here before React renders
+const { dispatch } = Store;
 const savedUser = localStorage.getItem("user");
 if (savedUser) {
-  store.dispatch(userLoggedIn({ user: JSON.parse(savedUser) }));
+  dispatch(userLoggedIn({ user: JSON.parse(savedUser) }));
 }
 
 createRoot(document.getElementById("root")).render(

@@ -1,8 +1,8 @@
 import { useCreateCheckoutSessionMutation } from "@/feautures/AppApis/TransactionApi";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 function BuyCourseBtn({ courseId }) {
   const navigate = useNavigate();
