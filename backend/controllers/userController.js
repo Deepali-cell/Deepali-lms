@@ -42,7 +42,7 @@ const registerUser = async (req, res) => {
     await newUser.save();
 
     const usertoken = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET);
-    res.status(201).json({ success: true, usertoken });
+    res.status(201).json({ success: true, usertoken, user: newUser });
   } catch (error) {
     console.log("error : ", error);
     res.json({ success: false, message: error });
@@ -87,6 +87,7 @@ const loginUser = async (req, res) => {
       email: user.email,
       enrollementCourses: user.enrollementCourses,
       userPic: user.userPic,
+      role: user.role,
     };
     return res
       .cookie("usertoken", usertoken, {
@@ -95,7 +96,7 @@ const loginUser = async (req, res) => {
         sameSite: "none", // very important for cross-site cookies
         maxAge: 24 * 60 * 60 * 1000,
       })
-      .json({ success: true, usertoken, userDetail });
+      .json({ success: true, usertoken, user: userDetail });
   } catch (error) {
     console.log("Login error:", error);
     res.status(500).json({ success: false, message: "Internal Server Error" });
@@ -130,10 +131,10 @@ const getProfile = async (req, res) => {
 const editProfile = async (req, res) => {
   try {
     const { name } = req.body;
-    const userPic = req.file;
+    const userPic = req.file; // will be undefined if no file uploaded
     const userId = req.userId;
 
-    // Find the user by ID
+    // Find the user
     const user = await userModel.findById(userId).select("-password");
     if (!user) {
       return res
@@ -141,40 +142,42 @@ const editProfile = async (req, res) => {
         .json({ success: false, message: "User not found." });
     }
 
-    // Validate name and email
-    if (!name) {
-      return res
-        .status(400)
-        .json({ success: false, message: "Name are required." });
+    // Update name only if provided
+    if (name && name.trim() !== "") {
+      user.name = name.trim();
     }
 
-    // Handle userPic upload to Cloudinary
-    const bufferStream = new PassThrough();
-    bufferStream.end(userPic.buffer);
+    // If image is uploaded, send to Cloudinary
+    if (userPic) {
+      const bufferStream = new PassThrough();
+      bufferStream.end(userPic.buffer);
 
-    const cloudinaryUpload = await new Promise((resolve, reject) => {
-      const stream = cloudinary.uploader.upload_stream(
-        { folder: "UserPic" },
-        (error, result) => {
-          if (result) resolve(result);
-          else reject(error);
-        }
-      );
-      bufferStream.pipe(stream);
-    });
+      const cloudinaryUpload = await new Promise((resolve, reject) => {
+        const stream = cloudinary.uploader.upload_stream(
+          { folder: "UserPic" },
+          (error, result) => {
+            if (result) resolve(result);
+            else reject(error);
+          }
+        );
+        bufferStream.pipe(stream);
+      });
 
-    // Update user details
-    user.name = name;
-    user.userPic = cloudinaryUpload.secure_url;
+      user.userPic = cloudinaryUpload.secure_url;
+    }
 
     await user.save();
-
-    res.status(200).json({ success: true, user });
+    res.status(200).json({
+      success: true,
+      message: "Profile updated successfully",
+      user,
+    });
   } catch (error) {
-    console.error(error);
+    console.error("Profile update error:", error);
     res.status(500).json({ success: false, message: "Internal server error." });
   }
 };
+
 const getBuyCourse = async (req, res) => {
   try {
     const userId = req.userId;

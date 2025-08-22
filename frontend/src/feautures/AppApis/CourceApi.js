@@ -89,6 +89,7 @@ export const CourceApi = createApi({
         url: `togglepublish/${courseId}?publish=${query}`,
         method: "PUT",
       }),
+      invalidatesTags: ["Refetch_Creator_Cource"],
     }),
     getPubishedCourse: builder.query({
       query: () => ({

@@ -58,14 +58,22 @@ function Profile() {
   const handleSubmit = async () => {
     try {
       const formData = new FormData();
-      formData.append("name", name || user.name);
-      formData.append("email", email);
-      formData.append("userPic", userPic);
+
+      if (name && name !== user.name) {
+        formData.append("name", name);
+      }
+
+      if (userPic) {
+        formData.append("userPic", userPic);
+      }
+
+      // Don't send email because it's read-only
       await updateProfile(formData);
     } catch (error) {
       console.error("Update failed:", error);
     }
   };
+
   useEffect(() => {
     refetch();
   }, []);

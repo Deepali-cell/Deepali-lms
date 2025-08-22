@@ -149,7 +149,7 @@ function EditLecture() {
             navigate(`/admin/cources/editcource/addlecture/${courseId}`)
           }
         />
-        <h1 className="text-2xl font-semibold text-gray-800 mb-4">
+        <h1 className="text-2xl font-semibold text-gray-800 mb-4 dark:text-white">
           Update Your Lecture
         </h1>
       </div>

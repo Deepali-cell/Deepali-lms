@@ -8,7 +8,7 @@ function EditCource() {
     <>
       <div>
         <div className="flex justify-center items-center gap-[300px]">
-          <h1 className="text-2xl font-bold mb-6 text-gray-800">
+          <h1 className="text-2xl font-bold mb-6 text-gray-800 dark:text-white">
             Add detail Information regarding cources
           </h1>
           <button

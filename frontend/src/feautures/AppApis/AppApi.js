@@ -19,10 +19,10 @@ export const AppApi = createApi({
       async onQueryStarted(_, { queryFulfilled, dispatch }) {
         try {
           const { data } = await queryFulfilled;
-          if (data?.userDetail) {
+          if (data?.user) {
             // Save to Redux + LocalStorage
-            dispatch(userLoggedIn({ user: data.userDetail }));
-            localStorage.setItem("user", JSON.stringify(data.userDetail));
+            dispatch(userLoggedIn({ user: data.user }));
+            localStorage.setItem("user", JSON.stringify(data.user));
           }
         } catch (err) {
           console.error(err);
@@ -39,10 +39,10 @@ export const AppApi = createApi({
       async onQueryStarted(_, { queryFulfilled, dispatch }) {
         try {
           const { data } = await queryFulfilled;
-          if (data?.userDetail) {
+          if (data?.user) {
             // Save to Redux + LocalStorage
-            dispatch(userLoggedIn({ user: data.userDetail }));
-            localStorage.setItem("user", JSON.stringify(data.userDetail));
+            dispatch(userLoggedIn({ user: data.user }));
+            localStorage.setItem("user", JSON.stringify(data.user));
           }
         } catch (err) {
           console.error(err);
@@ -55,8 +55,8 @@ export const AppApi = createApi({
       async onQueryStarted(_, { queryFulfilled, dispatch }) {
         try {
           const { data } = await queryFulfilled;
-          if (data?.userDetail) {
-            dispatch(userLoggedIn({ user: data.userDetail }));
+          if (data?.user) {
+            dispatch(userLoggedIn({ user: data.user }));
           }
         } catch (err) {
           console.error(err);
