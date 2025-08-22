@@ -31,7 +31,7 @@ courseRoute.post(
   editCourse
 );
 courseRoute.delete("/deletecourse/:courseId", authUser, deleteCourse);
-courseRoute.get("/getcoursebyid/:courseId", authUser, getCourceById);
+courseRoute.get("/getcoursebyid/:courseId", getCourceById);
 courseRoute.post("/createlecture/:courseId", authUser, createLecture);
 courseRoute.get("/getlecture/:courseId", authUser, getlecture);
 courseRoute.post("/:courseId/editlecture/:lectureId", authUser, editLecture);

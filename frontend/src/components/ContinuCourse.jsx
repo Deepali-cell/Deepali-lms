@@ -1,5 +1,5 @@
 import { useGetCourseLectureQuery } from "@/feautures/AppApis/TransactionApi";
-import { Button } from "./button";
+import { Button } from "./ui/button";
 import { FaRegCirclePlay } from "react-icons/fa6";
 import { useParams } from "react-router-dom";
 import { useState } from "react";

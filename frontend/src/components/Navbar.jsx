@@ -1,5 +1,5 @@
 import { MenuIcon, School } from "lucide-react";
-import { Button } from "./button";
+import { Button } from "./ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import DarkMode from "./DarkMode";
+import DarkMode from "./ui/DarkMode";
 import {
   Sheet,
   SheetClose,

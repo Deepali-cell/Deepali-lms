@@ -1,6 +1,6 @@
 import { useTheme } from "@/components/Themeprovider";
 import { Button } from "@/components/ui/button";
-import BuyCourseBtn from "@/components/ui/BuyCourseBtn";
+import BuyCourseBtn from "@/components/BuyCourseBtn";
 import { useGetCourseByIdQuery } from "@/feautures/AppApis/CourceApi";
 import { usePurchaseStatusQuery } from "@/feautures/AppApis/TransactionApi";
 import { useNavigate, useParams } from "react-router-dom";

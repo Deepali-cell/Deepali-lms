@@ -59,28 +59,32 @@ const Login = () => {
       setlogindetail({ email: "", password: "" });
     }
   };
+
   useEffect(() => {
-    if (registerSuccess && registerData) {
-      toast.success(registerData.message || "signup successfully");
-    }
-    if (loginSuccess && loginData) {
-      toast.success(loginData.message || "login successfully");
+    // Signup success → auto-login → go home
+    if (registerSuccess && registerData?.userDetail) {
+      toast.success(registerData.message || "Signup successfully");
       navigate("/");
     }
-    if (registerError) {
-      toast.error(registerError.data.message || "signup failed");
+
+    // Login success → go home
+    if (loginSuccess && loginData?.userDetail) {
+      toast.success(loginData.message || "Login successfully");
+      navigate("/");
     }
-    if (loginError) {
-      toast.error(loginError.data.message || "login failed");
-    }
+
+    if (registerError)
+      toast.error(registerError.data?.message || "Signup failed");
+    if (loginError) toast.error(loginError.data?.message || "Login failed");
   }, [
-    loginLoading,
-    registerLoading,
-    loginData,
+    registerSuccess,
+    loginSuccess,
     registerData,
-    loginError,
+    loginData,
     registerError,
+    loginError,
   ]);
+
   return (
     <>
       <div className="flex items-center justify-center mt-10">

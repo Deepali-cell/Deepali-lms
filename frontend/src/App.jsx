@@ -15,7 +15,7 @@ import ShowCourseById from "./pages/admin/cource/ShowCourseById";
 import EditLecture from "./pages/admin/cource/EditLecture";
 import CourseDetailPage from "./pages/students/CourseDetailPage";
 import TransactionPage from "./pages/students/TransactionPage";
-import ContinuCourse from "./components/ui/ContinuCourse";
+import ContinuCourse from "./components/ContinuCourse";
 import SearchPage from "./pages/students/SearchPage";
 import {
   AdminRoute,
