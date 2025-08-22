@@ -65,11 +65,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path: "/coursedetailpage/:courseId",
-        element: (
-          <NonAuthenticatedRoute>
-            <CourseDetailPage />
-          </NonAuthenticatedRoute>
-        ),
+        element: <CourseDetailPage />,
       },
       {
         path: "/transactionpage/:paymentId/course/:courseId",
