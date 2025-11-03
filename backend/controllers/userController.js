@@ -78,9 +78,11 @@ const loginUser = async (req, res) => {
         .status(401)
         .json({ success: false, message: "Incorrect password." });
     }
+
     const usertoken = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
       expiresIn: "1d",
     });
+
     const userDetail = {
       id: user._id,
       name: user.name,
@@ -89,19 +91,34 @@ const loginUser = async (req, res) => {
       userPic: user.userPic,
       role: user.role,
     };
+
+    // ✅ COOKIE FIX
+    const cookieOptions = {
+      httpOnly: true,
+      maxAge: 24 * 60 * 60 * 1000,
+    };
+
+    // ✅ Production → secure+none
+    if (process.env.NODE_ENV === "production") {
+      cookieOptions.secure = true;
+      cookieOptions.sameSite = "none";
+    }
+
+    // ✅ Localhost → not secure, lax
+    else {
+      cookieOptions.secure = false;
+      cookieOptions.sameSite = "lax";
+    }
+
     return res
-      .cookie("usertoken", usertoken, {
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production", // true in production
-        sameSite: "none", // very important for cross-site cookies
-        maxAge: 24 * 60 * 60 * 1000,
-      })
+      .cookie("usertoken", usertoken, cookieOptions)
       .json({ success: true, usertoken, user: userDetail });
   } catch (error) {
     console.log("Login error:", error);
     res.status(500).json({ success: false, message: "Internal Server Error" });
   }
 };
+
 const logoutUser = async (req, res) => {
   try {
     return res

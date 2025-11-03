@@ -12,9 +12,10 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
-app.use( 
+app.use(
   cors({
     origin: "https://deepali-lms-qgqc.vercel.app",
+    // origin: "http://localhost:5173",
     credentials: true,
   })
 );
@@ -24,6 +25,10 @@ mongoDb();
 app.get("/", (req, res) => {
   res.send("Welcome to API");
 });
+
+// app.listen(3000, () => {
+//   console.log("backend is running");
+// });
 
 app.use("/user", userRouter);
 app.use("/cource", courceRoute);

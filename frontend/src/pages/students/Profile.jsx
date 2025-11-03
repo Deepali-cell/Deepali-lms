@@ -214,10 +214,10 @@ function Profile() {
               ))
             ) : (
               <>
-                {myCources.length === 0 ? (
+                {myCources?.length === 0 ? (
                   <p>You are not enrolled in any cource.</p>
                 ) : (
-                  myCources.map((course, index) => (
+                  myCources?.map((course, index) => (
                     <Cource key={index} course={course} />
                   ))
                 )}
